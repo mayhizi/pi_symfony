@@ -1,0 +1,7 @@
+participation_participation:
+    resource: "@ParticipationBundle/Resources/config/routing/participation.yml"
+    prefix:   /participation
+
+participation_homepage:
+    path:     /
+    defaults: { _controller: ParticipationBundle:Default:index }

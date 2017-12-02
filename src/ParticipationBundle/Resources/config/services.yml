@@ -1,0 +1,4 @@
+services:
+#    participation.example:
+#        class: ParticipationBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

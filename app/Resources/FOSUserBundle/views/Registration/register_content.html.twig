@@ -1,0 +1,73 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link href="{{ asset('public/admin/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset('public/admin/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{ asset('public/admin/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="{{ asset('public/admin/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('public/admin/build/css/custom.min.css') }}" rel="stylesheet">
+
+</head>
+<body class="login">
+<div>
+    <a class="hiddenanchor" id="signup"></a>
+    <a class="hiddenanchor" id="signin"></a>
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="login_wrapper">
+        <div id="register" class=" form ">
+            <section class="login_content">
+                {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+                <h1>Create Account</h1>
+                <div>
+                    {{ form_widget(form.username, { 'attr': {'class': 'form-control','placeholder': "Username"} })}}
+                    {{ form_errors(form.username) }}
+                </div>
+                <div>
+                    {{ form_widget(form.email, { 'attr': {'class': 'form-control','placeholder': "Email"} })}}
+                    {{ form_errors(form.email) }}
+                </div>
+                <div>
+                    {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control','placeholder': "Password"} })}}
+                    {{ form_errors(form.plainPassword.first) }}
+                </div>
+                <div>
+                    {{ form_widget(form.plainPassword.second ,{ 'attr': {'class': 'form-control','placeholder': "Re-Type your password"} })}}
+                </div>
+                <div>
+                    <div>
+                        <input type="submit" class="btn btn-default submit" value="Register" />
+                    </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="separator">
+                    <p class="change_link">Already a member ?
+                        <a href="{{ path('fos_user_security_login') }}" class="to_register"> Log in </a>
+                    </p>
+
+                    <div class="clearfix"></div>
+                    <br />
+
+                    <div>
+                        <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
+                        <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+
+            </section>
+        </div>
+
+
+    </div></div></body></html>

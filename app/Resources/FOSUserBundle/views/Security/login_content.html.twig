@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <link href="{{ asset('public/admin/vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="{{ asset('public/admin/vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="{{ asset('public/admin/vendors/nprogress/nprogress.css') }}" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="{{ asset('public/admin/vendors/animate.css/animate.min.css') }}" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="{{ asset('public/admin/build/css/custom.min.css') }}" rel="stylesheet">
+
+</head>
+
+{% trans_default_domain 'FOSUserBundle' %}
+{% block body %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+
+
+
+<body class="login">
+<div>
+    <a class="hiddenanchor" id="signup"></a>
+    <a class="hiddenanchor" id="signin"></a>
+
+    <div class="login_wrapper">
+        <div class="animate form login_form">
+            <section class="login_content">
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    {% if csrf_token %}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    {% endif %}
+                    <h1>Login Form</h1>
+
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" placeholder="Username" required="required" />
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" class="form-control" placeholder="Password" name="_password" required="required" />
+
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    <label for="remember_me">Remember me</label>
+
+                    <input type="submit" id="_submit" name="_submit" value="Login" />
+
+
+
+                    <div class="clearfix"></div>
+
+                    <div class="separator">
+                        <p class="change_link">New to site?
+                            <a href="{{ path('fos_user_registration_register') }}" class="to_register"> Create Account </a>
+                        </p>
+
+                        <div class="clearfix"></div>
+                        <br />
+
+                        <div>
+                            <h1><i class="fa fa-paw"></i> TuniRando!</h1>
+                            <p>©2016 All Rights Reserved. TuniRando! Privacy and Terms</p>
+                        </div>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </div>
+</div>
+
+</body></html>
+
+{% endblock %}

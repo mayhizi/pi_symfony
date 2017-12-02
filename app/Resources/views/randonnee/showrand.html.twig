@@ -1,0 +1,71 @@
+{% extends 'default.html.twig' %}
+
+
+{% block content %}
+
+    <h1>Randonnee</h1>
+
+    <table>
+        <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ randonnee.id }}</td>
+        </tr>
+        <tr>
+            <th>Nom</th>
+            <td>{{ randonnee.nom }}</td>
+        </tr>
+        <tr>
+            <th>Destination</th>
+            <td>{{ randonnee.destination }}</td>
+        </tr>
+        <tr>
+            <th>Prix</th>
+            <td>{{ randonnee.prix }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ randonnee.description }}</td>
+        </tr>
+        <tr>
+            <th>Type_rand</th>
+            <td>{{ randonnee.typerand }}</td>
+        </tr>
+        <tr>
+            <th>Nb_places</th>
+            <td>{{ randonnee.nbplaces }}</td>
+        </tr>
+        <tr>
+            <th>Date_debut</th>
+            <td>{{ randonnee.datedebut|date('H:i') }}</td>
+        </tr>
+        <tr>
+            <th>Date_fin</th>
+            <td>{{ randonnee.datefin|date('H:i')}}</td>
+        </tr>
+        <tr>
+            <th>Date_rand</th>
+            <td>{% if randonnee.daterand %}{{ randonnee.daterand|date('Y-m-d') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Updatedat</th>
+            <td>{% if randonnee.updatedAt %}{{ randonnee.updatedAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Image</th>
+            <td>{% if randonnee.image %}<img height="60" src="http://localhost/randsesprit/web/{{ vich_uploader_asset(randonnee, 'imageFile', 'RandonneeBundle\\Entity\\Randonnee') }}" />{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Map</th>
+            <td>{% include 'default/map.html.twig' with {'destination': randonnee.destination}  %}</td>
+        </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('randonnee_affiche') }}">Back to the list</a>
+        </li>
+
+
+{% endblock %}

@@ -1,0 +1,24 @@
+randonnee_index:
+    path:     /
+    defaults: { _controller: "RandonneeBundle:Randonnee:index" }
+    methods:  GET
+
+randonnee_show:
+    path:     /{id}/show
+    defaults: { _controller: "RandonneeBundle:Randonnee:show" }
+    methods:  GET
+
+randonnee_new:
+    path:     /new
+    defaults: { _controller: "RandonneeBundle:Randonnee:new" }
+    methods:  [GET, POST]
+
+randonnee_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "RandonneeBundle:Randonnee:edit" }
+    methods:  [GET, POST]
+
+randonnee_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "RandonneeBundle:Randonnee:delete" }
+    methods:  DELETE

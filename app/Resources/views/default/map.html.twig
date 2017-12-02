@@ -1,0 +1,32 @@
+
+<div style="width: 100%;min-height: 600px;" id="map"></div>
+<script>
+//    var centerPosition = {lat: 34.251, lng: 10.129};
+//    var departPosition = {lat: 36.898, lng: 10.187};
+//    var destinationPosition = {lat: 35.821, lng: 10.638};
+    function initMap() {
+
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var directionsService = new google.maps.DirectionsService;
+        var map = new google.maps.Map(document.getElementById('map'));
+        directionsDisplay.setMap(map);
+
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+    }
+    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        var selectedMode = 'DRIVING';
+        directionsService.route({
+            origin: "tunis",
+            destination: '{{ destination }}',
+            travelMode: google.maps.TravelMode[selectedMode]
+        }, function(response, status) {
+            if (status == 'OK') {
+                directionsDisplay.setDirections(response);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAD77uDmYhlHfM4hvrA3vNMERmMPprdCdo&callback=initMap"></script>

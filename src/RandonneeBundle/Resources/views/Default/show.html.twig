@@ -1,0 +1,54 @@
+{% extends 'default.html.twig' %}
+
+{% block contentTitle %}
+    <section class="page-title">
+        <div class="auto-container">
+            <div class="inner-box">
+                <h1>Randonnée</h1>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block contentheader %}
+
+
+    <div class="auto-container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="event-style-two">
+                        <div class="thumbnail inner">
+                            <img src="http://localhost/randsesprit/web/{{ vich_uploader_asset(randonnee, 'imageFile', 'RandonneeBundle\\Entity\\Randonnee') }}" data-holder-rendered="true">
+
+                            <div class="caption lower-content">
+                                {% if randonnee.daterand %}
+                                <div class="posted-date">{{ randonnee.daterand|date('d') }} <span>{{ randonnee.daterand|date('m') }}</span></div>
+                                {% endif %}
+                                <ul class="post-meta">
+                                    <li><span class="icon fa fa-clock-o" style="color: #06d666;"></span> {{ randonnee.datedebut|date('H:i') }} AM - {{ randonnee.datefin|date('H:i')}} Am</li>
+                                    <li><span class="icon fa fa-map-marker" style="color: #06d666;"></span> {{ randonnee.destination }}</li>
+                                    <li><span class="icon fa fa-money" style="color: #06d666;"></span> {{ randonnee.prix }}</li>
+                                </ul>
+                                <h3>{{ randonnee.nom }} <span class="badge">{{ randonnee.typerand }}</span></h3>
+                                <div class="text">
+                                    <p>{{ randonnee.description }}</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-6">
+                    <div class="container-fluid" style="overflow: hidden">
+                        {% include 'default/map.html.twig' with {'destination': randonnee.destination}  %}
+                    </div>
+                </div>
+
+            </div>
+    </div>
+
+
+{% endblock %}
+

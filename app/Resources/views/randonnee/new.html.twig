@@ -1,0 +1,133 @@
+{% extends 'admin.html.twig' %}
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Creer une Randonnee</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <br />
+                    {{ form_start(form, {'method': 'post', 'action': path('randonnee_new'), 'attr': {'class': 'form-horizontal form-label-left'}}) }}
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nom">Nom du randonnée <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.nom, { 'attr': {'class': 'form-control  col-md-7 col-xs-12','required' :"required"} })}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="destination">Destination<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.destination, { 'attr': {'class': 'form-control  col-md-7 col-xs-12','required' :"required"} })}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type_rand">Type<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.type_rand, { 'attr': {'class': 'form-control  col-md-7 col-xs-12','required' :"required"} })}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="date_rand">Date <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class='input-group date' id='myDatepicker2'>
+                                {{ form_widget(form.date_rand, { 'attr': {'class': 'form-control  col-md-7 col-xs-12','required' :"required"} })}}
+                                <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="date_debut">Temps_début <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class='input-group date' id='myDatepicker2'>
+                                {{ form_widget(form.date_debut, { 'attr': {'class': 'form-control  col-md-7 col-xs-12','required' :"required"} })}}
+                                <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="date_fin">Temps_fin <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class='input-group date' id='myDatepicker2'>
+                                {{ form_widget(form.date_fin, { 'attr': {'class': 'form-control  col-md-7 col-xs-12','required' :"required"} })}}
+                                <span class="input-group-addon">
+                               <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nb_places">Nombre de place <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.nb_places, { 'attr': {'class': 'form-control  col-md-7 col-xs-12','required' :"required"} })}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="prix">Prix <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.prix, { 'attr': {'class': 'form-control  col-md-7 col-xs-12','required' :"required"} })}}
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="description">Description <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.description, { 'attr': {'class': 'form-control  col-md-7 col-xs-12','required' :"required"} })}}
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="image">Image<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {{ form_widget(form.imageFile, { 'attr': {'class': 'imgupload form-control' }}) }}   <br>
+                        </div>
+                    </div>
+
+
+
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button class="btn btn-primary" type="reset">Vider</button>
+                            <button type="submit" class="btn btn-success">Creer</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}
+ {% block javascripts %}
+     <script>
+         $('#myDatepicker2').datetimepicker({
+             format: 'DD.MM.YYYY'
+         });
+     </script>
+{% endblock %}

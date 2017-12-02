@@ -1,0 +1,16 @@
+randonnee_randonnee:
+    resource: "@RandonneeBundle/Resources/config/routing/randonnee.yml"
+    prefix:   /dashboard/randonnees
+
+randonnees_homepage:
+    path:     /randonnees
+    defaults: { _controller: RandonneeBundle:Default:index }
+
+randonnees_chercher:
+      path:     /randonnees/chercher/{term}
+      defaults: { _controller: "RandonneeBundle:Default:chercher" , term: ""}
+      methods:  GET
+randonnees_show:
+    path:     /randonnees/show/{id}
+    defaults: { _controller: "RandonneeBundle:Default:show" , id : ""}
+    methods:  GET

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+
+
+{% block body %}
+<div class="page-wrapper">
+    {{ include('default/header.html.twig') }}
+    {% block contentTitle %}{% endblock %}
+    {% block contentheader %}{% endblock %}
+    {% block content %}{% endblock %}
+</div>
+{% endblock %}
+
+
+
+
+
+
+{% block stylesheets %}
+    <!-- Stylesheets -->
+    <link href="{{ asset('public/user/css/bootstrap.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/user/css/revolution-slider.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/user/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('public/user/css/jquery-ui.css') }}" rel="stylesheet">
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="{{ asset('public/user/css/responsive.css') }}" rel="stylesheet">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="{{ asset('js/respond.js') }}"></script><![endif]-->
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{ asset('public/user/js/jquery.js') }}"></script>
+    <script src="{{ asset('public/user/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/user/js/revolution.min.js') }}"></script>
+    <script src="{{ asset('public/user/js/jquery-ui.js') }}"></script>
+    <script src="{{ asset('public/user/js/jquery.fancybox.pack.js') }}"></script>
+    <script src="{{ asset('public/user/js/jquery.fancybox-media.js') }}"></script>
+    <script src="{{ asset('public/user/js/owl.js') }}"></script>
+    <script src="{{ asset('public/user/js/wow.js') }}"></script>
+    <script src="{{ asset('public/user/js/appear.js') }}"></script>
+    <script src="{{ asset('public/user/js/script.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'default.html.twig' %}
+
+{% block content %}
+     <div class="sidebar-side col-lg-4 col-md-4 col-sm-8 col-xs-12">
+                	<aside class="sidebar default-sidebar">
+
+                        <!-- Search Form -->
+                        <div class="sidebar-widget search-box">
+                            <form method="post" action="contact.html">
+                                <div class="form-group">
+                                    <input type="search" name="search-field" value="" placeholder="Search...">
+                                    <button type="submit"><span class="icon fa fa-search"></span></button>
+                                </div>
+                            </form>
+                        </div>
+    <table id="datatable-checkbox" class="table table-striped table-bordered bulk_action dataTable no-footer" role="grid" aria-describedby="datatable-checkbox_info">
+        <thead>
+        <tr role="row">
+            <th class="sorting" tabindex="0" aria-controls="datatable-checkbox" rowspan="1" colspan="1" aria-label="ID: activate to sort column ascending" style="width: 139px;">ID</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable-checkbox" rowspan="1" colspan="1" aria-label="Nom: activate to sort column ascending" style="width: 139px;">Nom</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable-checkbox" rowspan="1" colspan="1" aria-label="Destination: activate to sort column ascending" style="width: 232px;">Destination</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable-checkbox" rowspan="1" colspan="1" aria-label="Prix: activate to sort column ascending" style="width: 102px;">Prix</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable-checkbox" rowspan="1" colspan="1" aria-label="Date: activate to sort column ascending" style="width: 51px;">Date</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable-checkbox" rowspan="1" colspan="1" aria-label="Départ: activate to sort column ascending" style="width: 100px;">Départ</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable-checkbox" rowspan="1" colspan="1" aria-label="Retour: activate to sort column ascending" style="width: 78px;">Retour</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable-checkbox" rowspan="1" colspan="1" aria-label="Description: activate to sort column ascending" style="width: 78px;">Description</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable-checkbox" rowspan="1" colspan="1" aria-label="Type: activate to sort column ascending" style="width: 78px;">Type</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable-checkbox" rowspan="1" colspan="1" aria-label="Places: activate to sort column ascending" style="width: 78px;">Places</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable-checkbox" rowspan="1" colspan="1" aria-label="Image: activate to sort column ascending" style="width: 78px;">Image</th>
+            <th class="sorting" tabindex="0" aria-controls="datatable-checkbox" rowspan="1" colspan="1" aria-label="Actions: activate to sort column ascending" style="width: 78px;">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for randonnee in randonnees %}
+            <tr role="row" class="odd">
+                <td><a href="{{ path('randonnee_show', { 'id': randonnee.id }) }}">{{ randonnee.id }}</a></td>
+                <td>{{ randonnee.nom }}</td>
+                <td>{{ randonnee.destination }}</td>
+                <td>{{ randonnee.prix }}</td>
+                <td>{% if randonnee.daterand %}{{ randonnee.daterand|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ randonnee.datedebut|date('H:i') }}</td>
+                <td>{{ randonnee.datefin|date('H:i') }}</td>
+                <td>{{ randonnee.description }}</td>
+                <td>{{ randonnee.typerand }}</td>
+                <td>{{ randonnee.nbplaces }}</td>
+                <td><img style="width:100%;" src="http://localhost/RandsEsprit/web/uploads/images/randonnees/{{ randonnee.image }}"></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('randonnee_showrand', { 'id': randonnee.id }) }}">show</a>
+                        </li>
+
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+
+    </table>
+
+{% endblock %}
+
+{% block pagejavascript %}
+    <!-- Datatables -->
+    <script src="{{ asset('public/admin/vendors/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/datatables.net-scroller/js/dataTables.scroller.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/jszip/dist/jszip.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/pdfmake/build/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/pdfmake/build/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('public/admin/vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js') }}"></script>
+{% endblock %}
